@@ -12,65 +12,13 @@
       <div class="stopwatch--display">
         <h2 id="stopWatchDisplay">00:00:00</h2>
         <div class="stopwatch--buttons">
-          <button onclick="stopTimer()" id="stopButton">Stop</button>
-          <button onclick="startTimer()" id="startButton">Start</button>
-          <button onclick="resetTimer()" id="resetButton">Reset</button>
+          <button id="pauseButton">Pause</button>
+          <button id="startButton">Start</button>
+          <button id="resetButton">Reset</button>
         </div>
       </div>
     </div>
 
-    <script>
-      const stopButton = document.getElementById("stopButton");
-      const startButton = document.getElementById("startButton");
-      const resetButton = document.getElementById("resetButton");
-      let timer = null;
-      let display = document.getElementById("stopWatchDisplay");
-      [second, minute, hour] = [0, 0, 0];
-      //   let second = 0;
-      //   let minute = 0;
-      //   let hour = 0;
-
-      function clockFormatter(clockHand) {
-        return clockHand < 10 ? "0" + clockHand : clockHand;
-      }
-
-      function stopWatch() {
-        second++;
-        if (second == 60) {
-          second = 0;
-          minute++;
-        }
-        if (minute == 60) {
-          minute = 0;
-          hour++;
-        }
-        if (hour == 24) {
-          hour = 0;
-        }
-        let formattedHour = clockFormatter(hour);
-        let formattedMinute = clockFormatter(minute);
-        let formattedSecond = clockFormatter(second);
-
-        display.textContent = `${formattedHour}:${formattedMinute}:${formattedSecond}`;
-      }
-
-      function startTimer() {
-        if (timer !== null) {
-          clearInterval(timer);
-        }
-        timer = setInterval(stopWatch, 1000);
-      }
-
-      function resetTimer() {
-        clearInterval(timer);
-        [second, minute, hour] = [0, 0, 0];
-        timer = null;
-        display.textContent = `00:00:00`;
-      }
-
-      function stopTimer() {
-        clearInterval(timer);
-      }
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>
